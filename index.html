@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekt_1_TI</title>
+    <link rel="stylesheet" href="./style.css">    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><!-- do wzorów wyswietlanych w zakladkach teoria -->
+    <style>@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,401&display=swap');</style><!-- font główny strony-->
+    <script SRC='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <script>MathJax.Hub.Config({ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}})</script> <!-- funkcje js -->
+    <script src="./script.js"></script>
+</head>
+<body>
+    <header>
+        <nav class = "navTop">
+            <ul>
+                <li><a href="#" id = "horizontal_theory" onclick="changeArticle(this);">Rzut poziomy - teoria</a></li>
+                <li><a href="#" id = "horizontal_simulation" onclick="changeArticle(this);">Rzut poziomy - symulacja</a></li>
+                <li><a href="#" id = "diagonal_theory" onclick="changeArticle(this);">Rzut ukośny - teoria</a></li>
+                <li><a href="#" id = "diagonal_simulation" onclick="changeArticle(this);">Rzut ukośny - symulacja</a></li>
+                <li><a href="#" id = "info" onclick="changeArticle(this);">Info</a></li>
+
+            </ul>
+        </nav>
+      </header>
+
+      <!--horizontal theory-->
+
+    <article id = "theoryHorizontalArticle" class = "articleContent" style="display: none;">
+            <h1 class = "middle">Rzut poziomy</h1>
+            <p class = "textContent">Rzut poziomy jest to ruch ciała w jednorodnym polu grawitacyjnym, wyrzuconego poziomo z pewną prędkością początkową 
+                <strong>V<sub>0</sub></strong> (prostopadłą do kierunku pola) z danej wysokości <strong>H<sub>0</sub></strong> nad poziomem zerowym. 
+                W naszych rozważaniach pomijamy opory powietrza. <br>Ciało wyrzucone poziomo w kierunku osi <strong>Ox</strong> ma początkową prędkość <strong>V<sub>0</sub></strong>. 
+                Zauważmy, że w tym kierunku ciało nie doznaje żadnego przyspieszenia, więc prędkość się nie zmienia. Ruch ciała w kierunku osi <strong>Ox</strong> 
+                jest ruchem jednostajnym ze stałą prędkością. Współrzędna <strong>x</strong> w każdej chwili ruchu jest równa zatem <strong>x=V<sub>0</sub>t</strong>. 
+                Ciało to jednocześnie spada swobodnie w kierunku osi <strong>Oy</strong>, czyli porusza się ruchem jednostajnie przyspieszonym. Gdy pominiemy opory 
+                ruchu, trajektoria rzutu opisana jest parabolą.
+            </p>
+            
+            <div class='cover' style='text-align: center;'>
+                <div style='display: inline-block; vertical-align: top;'>
+                    <img class = "mid_img" width = "400" src="./media/horizontal_projection_chart.png" alt="horizontal_chart">
+                    <h4 class="middle">Rys.1 Wykres rzutu poziomego.</h4>
+                </div>
+                <div style='display: inline-block; vertical-align: top; margin-top: 142px;'>
+                    <video width="450" controls>
+                        <source src = "./media/video_horizontal.mp4" type = "video/mp4">
+                    </video> 
+                    <h4 class="middle">Zastosowanie rzutu poziomego w rożnych dziedzinach.</h4>
+                </div>
+            </div>
+         
+            <br>
+            <h1 class="middle">Opis ruchu rzutu poziomego</h1>
+            <p class="middle">(Pomijamy opory ruchu)</p><br>
+            <p class = "textContent">
+                Podczas rzutu poziomego obserwujemy złożeniem dwóch ruchów: <br>
+            </p>
+            <ol>
+                <li> Ruch ciała jednostajny prostoliniowy w kierunku poziomym z prędkością początkową <strong>V<sub>0</sub></strong></li>
+                <li> Ruch jednostajnie przyspieszony w kierunku pionowym bez prędkości początkowej dzięki stałemu działaniu na ciało siły grawitacji <strong>g</strong>.</li>
+            </ol>
+                <table class = "midTable formulaTable">
+                    <tr>
+                        <th>Opis tekstowy</th>
+                        <th>Wzór</th>
+                    </tr>
+                    <tr>
+                        <td>Wartość prędkości poziomej</td>
+                        <td>$$Vx = Vo = const$$</td>
+                    </tr>
+                    <tr>
+                        <td>Wartość prędkości pionowej</td>
+                        <td>$$Vy = -g*t$$</td>
+                    </tr>
+                    <tr>
+                        <td>Zasięg maksymalny</td>
+                        <td>$$ z = Vo * \sqrt{2*Ho \over g}$$</td>
+                    </tr>
+                    <tr>
+                        <td>Czas spadku swobodnego</td>
+                        <td>$$ts = \sqrt{2*Ho\over g}$$</td>
+                    </tr>
+                    <tr>
+                        <td>Równanie toru rzutu poziomego</td>
+                        <td>$$y = Ho - {g*x^2 \over 2 * Vo^2}$$</td>
+                    </tr>
+                </table>
+    </article>
+
+    <!-- horizontal simulation -->
+
+    <article id = "horizontalArticle" class = "articleContent" style="display: none;">
+        <h1 class = "middle">Symulacja rzutu poziomego</h1>
+        
+        <div class = "tank">
+            
+        <table class="midTable formulaTable balanceTable">
+            <tr>
+                <th>Parametr</th>
+                <th>Wartość</th>
+            </tr>
+            <tr>
+                <td>Zasieg maksymalny</td>
+                <td id = "rangeHorizontalDiv">-</td>
+            </tr>
+            <tr>
+                <td>Czas spadku swobodnego</td>
+                <td id = "timeHorizontalDiv">-</td>
+            </tr>
+            <tr>
+                <td>V<sub>x</sub></td>
+                <td id = "equationVxHorizontal">-</td>
+            </tr>
+            <tr>
+                <td>V<sub>y</sub></td>
+                <td id = "equationVyHorizontal">-</td>
+            </tr>
+        </table> 
+        
+        <canvas id = "horizontal" width="1000" height="600">ERROR</canvas> 
+
+        <table class="midTable">
+            <tr>
+                <td>Siła grawitacji: </td>
+                <td><input type="range" id = "gravity" min = "0" max = "20" value = "10" step = "0.01" oninput="positionHorizontal(this.value,'gravityHorizontal');"></td>
+                <td><output name="value" id = "gravityHorizontal" for ="gravity">10.00</output></td>
+            </tr>
+            <tr>
+                <td>Predkosc początkowa: </td>
+                <td><input type="range" id="velocity" min = "1" max = "20" value = "8" step="0.01" oninput = "positionHorizontal(this.value, 'velocityHorizontal');"></td>
+                <td><output name="value" id = "velocityHorizontal" for ="velocity">8.00</output></td>
+            </tr>
+            <tr>
+                <td>Wyoskosc początkowa: </td>
+                <td><input type="range" id = "height" min = "0" max = "14" value = "7" step = "0.01" oninput="positionHorizontal(this.value, 'heightHorizontal');"></td>
+                <td><output name="value" id = "heightHorizontal" for ="height">7.00</output></td>
+            </tr>
+            <tr>
+                <td colspan="3"><div class = "middle"><button onclick="simulateHorizontal()">Symulacja</button></div></td>
+            </tr>
+        </table>
+            
+        </div>  
+    </article>
+
+    <!-- diagonal theory -->
+
+    <article id = "theoryDiagonalArticle" class = "articleContent" style = "display: none;">
+        <h1 class = "middle">Rzut ukośny</h1>
+        <p class = "textContent">
+            W rzucie ukośnym mamy do czynienia z lotem ciała wyrzuconego z poziomu zerowego (<strong>H<sub>0</sub> = 0</strong>) w jednorodnym polu grawitacyjnym. 
+            Ciału jest nadawana prędkość o wartości <strong>V<sub>0</sub></strong>, skierowana pod kątem <strong>&alpha;</strong> do poziomu. Ciało porusza się łukiem, by po pewnym czasie opaść na ziemię. 
+            Podobnie jak w przypadku rzutu poziomego, gdy pominiemy opory ruchu, trajektoria rzutu ukośnego będzie określona przez parabolę.
+        </p>
+        <br>
+
+        <div class='cover' style='text-align: center;'>
+            <div style='display: inline-block; vertical-align: top;'>
+                <img class = "mid_img" src="./media/diagonal_projection_chart.png" alt="diagonal_chart" width="500">
+        <h4 class="middle">Rys.1 Wykres rzutu ukośnego z pewnej wysokości h.</h4>
+            </div>
+            <div style='display: inline-block; vertical-align: top; margin-top: 115px;'>
+                <video width="450" controls>
+                    <source src = "./media/video_diagonal.mp4" type = "video/mp4">
+                </video>
+                <h4 class="middle">Zastosowanie rzutu ukośnego.</h4>
+            </div>
+        </div>
+
+        <br>
+            <h1 class="middle">Opis ruchu rzutu ukośnego</h1>
+            <p class="middle">(Pomijamy opory ruchu)</p><br>
+            <p class="textContent">
+                W przypadku gdy nie musimy uwzględniać oporu powietrza, ruch ciała rozkłada się wtedy na dwa ruchy prostsze:<br>
+            </p>
+            <ol>
+                <li>Ruch w poziomie (współrzędna <strong>x</strong>-owa) – odbywa się ze stałą prędkością o wartości składowej poziomej prędkości początkowej <strong>V<sub>0x</sub></strong>,</li>
+                <li>Ruch w pionie (współrzędna <strong>x</strong>-owa) – jest w istocie rzutem pionowym, czyli ruchem jednostajnie zmiennym z prędkością początkową równą składowej pionowej 
+                <strong>V<sub>0y</sub></strong>. Mozna podzielić go na dwa etapy:</li>
+                <ul>
+                    <li>Ruch od wysokości początkowej do osiągnięcia maksymalnej wysokości (prędkość <strong>V<sub>y</sub></strong> wówczas maleje),</li>
+                    <li>Ruch od wysokości maksymalnej do osiągnięcia wysokości minimalnej - 0 (prędkość <strong>V<sub>y</sub></strong> wówczas rośnie).</li>
+                </ul>
+            </ol>
+           
+            <table class = "midTable formulaTable">
+                <tr>
+                    <th>Opis tekstowy</th>
+                    <th>Wzór</th>
+                </tr>
+                <tr>
+                    <td>Wartość prędkości poziomej</td>
+                    <td>$$Vx = Vo*cos(&alpha;)$$</td>
+                </tr>
+                <tr>
+                    <td>Wartość prędkości pionowej</td>
+                    <td>$$Vy = Vo*sin(&alpha;)$$</td>
+                </tr>
+                <tr>
+                    <td>Zasięgo maksymalny</td>
+                    <td>$$z = {S1 + S2} = Vo * cos(&alpha;) * ({{Vo*sin(&alpha;) \over {g}} + \sqrt{{2*Ho \over g} + {(Vo*sin(&alpha;))^2 \over {g^2}}}})$$</td>
+                </tr>
+                <tr>
+                    <td>Czas spadku swobodnego (wysokość od Hmax do 0)</td>
+                    <td>$$ts = \sqrt{{2*Ho \over g} + {(Vo*sin(&alpha;))^2 \over g^2} }$$</td>
+                </tr>
+                <tr>
+                    <td>Czas lotu całkowitego (czas wznoszenia + czas spadku swobodnego)</td>
+                    <td>$$tc = tw + ts = {Vo*sin(&alpha;) \over g} + \sqrt{{2*Ho \over g} + {(Vo*sin(&alpha;))^2 \over g^2} }$$</td>
+                </tr>
+                <tr>
+                    <td>Wysokość maksymalna</td>
+                    <td>$$Hmax = Ho + {(Vo*sin(&alpha;))^2 \over 2*g}$$</td>
+                </tr>
+                <tr>
+                    <td>Równanie toru rzutu ukośnego</td>
+                    <td>$$y = Ho + {{Vo*sin(&alpha;)} * {{x} \over {Vo*cos(&alpha;)}} - {{g \over 2} * {x^2 \over {(Vo*cos(&alpha;))^2}}}}$$</td>
+                </tr>
+            </table>
+    </article>
+    
+<!-- diagonal simulation -->
+
+     <article id = "diagonalArticle" class = "articleContent" style="display: none;">
+        <h1 class="middle">Symulacja rzutu ukośnego</h1>
+        
+
+        <div class = "tank">
+        <table class = "midTable formulaTable balanceTable">
+            <tr>
+                <th>Parametr</th>
+                <th>Wartość</th>
+            </tr>
+            <tr>
+                <td>Zasięg maksymalny</td>
+                <td id = "rangeDiagonalDiv">-</td>
+            </tr>
+            <tr>
+                <td>Wysokość maksymalna</td>
+                <td id = "heightDiagonalDiv">-</td>
+            </tr>
+            <tr>
+                <td>Czas spadku swobodnego</td>
+                <td id = "timeFallDiagonalDiv">-</td>
+            </tr>
+            <tr>
+                <td>Czas całkowitego lotu:</td>
+                <td id = "timeFlyDiagonalDiv">-</td>
+            </tr>
+            <tr>
+                <td>V<sub>x</sub></td>
+                <td id = "equationVxDiagonal">-</td>
+            </tr>
+            <tr>
+                <td>V<sub>y</sub></td>
+                <td id = "equationVyDiagonal">-</td>
+            </tr>
+        </table>
+
+        <canvas id = "diagonal" width="1000" height="600">ERROR</canvas>
+    
+        <table class="midTable">
+            <tr>
+                <td>Siła grawitacji: </td>
+                <td><input type="range" id = "gravityDiagonal" min = "0" max = "20" value = "10" step = "0.01" oninput="positionDiagonal(this.value, 'gravityDiagonalValue');"></td>
+                <td> <output name="value" id = "gravityDiagonalValue" for ="gravityDiagonal">10.00</output></td>
+            </tr>
+            <tr>
+                <td>Predkosc początkowa: </td>
+                <td><input type="range"  id="velocityDiagonal" min = "1" max = "20" value = "8" step="0.01" oninput = "positionDiagonal(this.value, 'velocityDiagonalValue');"></td>
+                <td><output name="value" id = "velocityDiagonalValue" for ="velocityDiagonal">8.00</output></td>
+            </tr>
+            <tr>
+                <td>Kąt wyrzutu: </td>
+                <td><input type="range"  id = "angleDiagonal" min = "0" max = "90" value = "45" step = "0.01" oninput="positionDiagonal(this.value, 'angleDiagonalValue');"></td>
+                <td><output name="value" id = "angleDiagonalValue" for ="angleDiagonal">45.00</output></td>
+            </tr>
+            <tr>
+                <td>Wyoskosc początkowa: </td>
+                <td><input type="range" id = "heightDiagonal" min = "0" max = "14" value = "0" step = "0.01" oninput="positionDiagonal(this.value, 'heightDiagonalValue');"></td>
+                <td><output name="value" id = "heightDiagonalValue" for ="heightDiagonal">0.00</output></td>
+            </tr>
+            <tr>
+                <td colspan="3"><div class = "middle"><button onclick="simulateDiagonal()">Symulacja</button></div></td>
+            </tr>
+        </table>
+        
+    </div>
+    </article>
+
+<!-- information -->
+
+    <article id = "infoArticle" class = "articleContent" style = "display: none;">
+        <h1 class = "middle">Strona informacyjna</h1>
+        <p class = "textContent">
+            Poniższa strona jest rozwiązaniem projektu nr 1 z przedmiotu Techniki Internetowe 2021. <br>
+            Wykorzystane technologie:<br>            
+        </p>
+        <ul>
+            <li>HTML5</li>
+            <li>CSS 3.0</li>
+            <li>JavaScript</li>
+        </ul>
+        <h3 class = "middle">Temat i zawartość merytoryczna</h3>
+        <p class = "textContent">
+            Tematem projektu jest symulacja rzutu poziomego oraz ukośnego ¯\_(ツ)_/¯. Strona internetowa zawiera górne menu dzięki któremu wygodnie można się przemieszczać pomiędzy sekcjami strony. <br>
+            Informacje będące wstępem teoretycznym do zagadnień rzutów znajdują się pod opcjami:
+        </p>
+        <ul>
+            <li>rzut poziomy - teoria,</li>
+            <li>rzut ukośny - teoria.</li>
+        </ul>
+        <p class = "textContent">
+            Symulacje obrazujące wybrane zagadnienie fizyczne zostały umieszczone pod opcjami:
+        </p>
+        <ul>
+            <li>rzut poziomy - symulacja,</li>
+            <li>rzut ukośny - symulacja.</li>
+        </ul>
+        <h3 class="middle">Działanie symulacji</h3>
+        <p class="textContent">
+            Interfejs symulacji składa się z:
+        </p>
+        <ul>
+            <li>elementu canvas, umożliwiającego wyświetlanie symulacji,</li>
+            <li>tabeli z aktualizowanymi parametrami rzutu,</li>
+            <li>pól wyboru parametrów startowych symulacji,</li>
+            <li>przycisku odpowiadającego za wyświetlenie prostej animacji.</li>
+        </ul>
+        <p class="textContent">
+            Trajektoria aktualizowana jest po zmianie dowolnego parametru początkowego, a po naciśnieciu przycisku "symulacja" pojawia się prosta animacja.
+            Reset symulacji następuje po zmianie parametrów początkowych.
+        </p>
+        <h3 class="middle">Język HTML5 </h3>
+        <p class="textContent">
+            Korzystając z elementów języka HTML wykonano szkielet strony wraz z odpowiednim formatowaniem treści. Wykorzystano elementy takie jak:
+            <b>&lt;header&gt;</b>, <b>&lt;nav&gt;</b>, <b>&lt;article&gt;</b>, <b>&lt;video&gt;</b>, <b>&lt;footer&gt;</b>. <br>
+            Przy użyciu elementu <b>&lt;canvas&gt;</b> wykonano przedstawienie graficzne rzutów.
+        </p>
+
+        <h3 class="middle">Język JavaScript</h3>
+        <p class="textContent">
+            Do modyfikacji dokumentu HTML5 posłużono się elementami języka JavaScript i funkcjami takimi jak: <b>getElementById</b> oraz <b>innerHTML</b>. <br>
+            Funkcje <b>on...</b> umożliwiły obsługę zdarzeń, a operacje na własnościach styli: <b>style.display : none/block</b>. 
+        </p>
+
+        <h3 class="middle">Walidacja</h3>
+        <p class="textContent">
+            Strona waliduje się poprawnie na stronie W3C zgodnie ze standardem HTML5 i CSS.
+        </p>
+    </article>
+
+    <div  class="interspace"> , </div>
+
+    <footer>
+        &copy; Łukasz Wajda - 31.12.2021
+    </footer>
+    
+</body>
+</html>

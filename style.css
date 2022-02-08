@@ -1,0 +1,165 @@
+body {
+    /*background-color: #f0efeb; */
+    /*background-color:#f3cdb7;*/
+    background-image: url(./media/background.png);
+    color:black;
+    font-family: 'Josefin Sans', sans-serif;
+    /*background: rgb(20, 240, 93); */
+    /*background: linear-gradient(58deg, #f0efeb 0%, #dbd5c7 35%, #f0efeb 100%);*/
+}
+
+.navTop{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    background-color: #0a171b;
+    overflow: hidden;
+}
+
+nav ul li {
+    display: inline;
+    margin: auto;
+    padding: 15px;
+}
+
+.navTop a {
+    color: #f2f2f2;
+    text-align: center;
+    padding: 16px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.navTop a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+video {
+    border: 6px solid rgb(245, 199, 74);
+    border-radius: 10px;
+}
+
+.interspace{
+    margin-bottom: 110px;
+    visibility: hidden;
+}
+
+footer {
+    position: fixed;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #0a171b;
+
+    color: white;
+    text-align: center;
+}
+
+h1{
+    color: rgb(67, 44, 158);
+}
+
+.articleContent{
+    margin-top: 100px;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-bottom: 0px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    background-image: url(./media/background_article.png);
+}
+
+.middle{
+    display: block;
+    text-align: center;
+}
+
+.mid_img{
+    border: 6px solid rgb(245, 199, 74);
+    background: white; padding: 4px;
+    border-radius: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.textContent{
+    display: block;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.textContent ul, li{
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.midTable{
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+.formulaTable{
+    border-collapse: collapse;
+    border: 1px solid black;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.17);
+}
+
+.formulaTable tr td{
+    padding: 12px 15px;
+}
+
+.formulaTable tr {
+    text-align: center;
+    background-color: #d8d1d1;
+}
+.formulaTable tr th{
+    background-color:#02212c;
+    color: #ffffff;
+    text-align: left;
+    padding: 12px 15px;
+    text-align: center;
+}
+
+/*
+.balanceTable{
+    table-layout: auto;
+}
+*/
+
+canvas{
+    background-color: #7fbda0;
+    border: thin inset #8297bb;    
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    display: block;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 55px 56px, rgba(0, 0, 0, 0.11) 0px -11px 31px, rgba(0, 0, 0, 0.11) 0px 5px 7px, rgba(0, 0, 0, 0.16) 0px 13px 14px, rgba(0, 0, 0, 0.08) 0px -2px 6px;
+}
+
+.tank { 
+    display: flex;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+button{
+    width: 100px;
+    height: 60px;
+    font-weight: bold;
+    background-color: rgb(223, 127, 120);
+    border: 6px solid rgb(226, 193, 101);
+    border-radius: 10px;
+}
+
